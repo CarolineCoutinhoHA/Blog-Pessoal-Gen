@@ -36,15 +36,21 @@ function Login() {
   const bodyStyle: React.CSSProperties = {
     backgroundColor: '#f9f3f3', // Rosa claro quase branco
     margin: 0, // Remove margens padrão do body
+    height: '100vh', // Garante que o body ocupe toda a altura da viewport
+    overflow: 'hidden', // Evita barras de rolagem
   };
 
   const fundoLoginStyle: React.CSSProperties = {
     backgroundImage: `url(${fundoLoginImg})`, // Usando a imagem importada
     backgroundRepeat: 'no-repeat',
-    minHeight: '100vh',
-    width: '100%',
-    backgroundSize: 'cover', // Ajusta o tamanho da imagem para cobrir o fundo
-    backgroundPosition: 'right',
+    backgroundSize: 'contain', // Ajusta a imagem para caber dentro do elemento sem cortar
+    backgroundPosition: 'right', // Posiciona a imagem no canto direito
+    position: 'absolute', // Remove o elemento do fluxo normal para poder ajustar a posição
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: -1, // Garante que a imagem fique atrás do formulário
   };
 
   const loginContainerStyle: React.CSSProperties = {
@@ -54,6 +60,8 @@ function Login() {
     height: '100vh',
     width: '100%',
     padding: 0, // Remove padding se necessário
+    position: 'relative', // Faz o container ficar acima da imagem de fundo
+    zIndex: 1,
   };
 
   const loginFormStyle: React.CSSProperties = {
