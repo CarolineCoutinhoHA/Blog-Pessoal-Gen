@@ -38,13 +38,14 @@ function Login() {
     margin: 0, // Remove margens padrão do body
     height: '100vh', // Garante que o body ocupe toda a altura da viewport
     overflow: 'hidden', // Evita barras de rolagem
+    position: 'relative', // Faz o body ficar no mesmo nível da imagem de fundo
   };
 
   const fundoLoginStyle: React.CSSProperties = {
     backgroundImage: `url(${fundoLoginImg})`, // Usando a imagem importada
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain', // Ajusta a imagem para caber dentro do elemento sem cortar
-    backgroundPosition: 'right', // Posiciona a imagem no canto direito
+    backgroundSize: 'cover', // Ajusta a imagem para cobrir o elemento sem cortar
+    backgroundPosition: 'center', // Centraliza a imagem
     position: 'absolute', // Remove o elemento do fluxo normal para poder ajustar a posição
     top: 0,
     right: 0,
@@ -55,11 +56,11 @@ function Login() {
 
   const loginContainerStyle: React.CSSProperties = {
     display: 'flex',
-    justifyContent: 'flex-end', // Alinha o formulário à direita
+    justifyContent: 'flex-start', // Alinha o formulário à esquerda
     alignItems: 'center', // Centraliza verticalmente
     height: '100vh',
     width: '100%',
-    padding: 0, // Remove padding se necessário
+    padding: '0 50px', // Adiciona padding horizontal para afastar o formulário das bordas da tela
     position: 'relative', // Faz o container ficar acima da imagem de fundo
     zIndex: 1,
   };
@@ -72,7 +73,6 @@ function Login() {
     padding: '20px', // Espaçamento interno
     maxWidth: '400px', // Largura máxima do formulário
     width: '100%', // Largura total do formulário
-    marginLeft: '250px', // Ajuste o valor conforme necessário para o espaço à direita
     zIndex: 1, // Garante que o formulário esteja acima da imagem de fundo
   };
 
@@ -147,6 +147,7 @@ function Login() {
 
   return (
     <div style={bodyStyle}>
+      <div style={fundoLoginStyle}></div>
       <div style={loginContainerStyle}>
         <form
           style={loginFormStyle}
@@ -220,7 +221,6 @@ function Login() {
             </Link>
           </p>
         </form>
-        <div style={fundoLoginStyle} className="hidden lg:block"></div>
       </div>
     </div>
   );
