@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
+import fundoLoginImg from '../../assets/img/asaswinx.jpg'; // Importe a imagem
 
 function Login() {
   let navigate = useNavigate();
@@ -11,8 +12,7 @@ function Login() {
     {} as UsuarioLogin
   );
 
-  const { usuario, handleLogin } = useContext(AuthContext);
-  const { isLoading } = useContext(AuthContext);
+  const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
   useEffect(() => {
     if (usuario.token !== "") {
@@ -39,11 +39,11 @@ function Login() {
   };
 
   const fundoLoginStyle: React.CSSProperties = {
-    backgroundImage: 'url(../../assets/img/asaswinx.jpg)',
+    backgroundImage: `url(${fundoLoginImg})`, // Usando a imagem importada
     backgroundRepeat: 'no-repeat',
     minHeight: '100vh',
     width: '100%',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover', // Ajusta o tamanho da imagem para cobrir o fundo
     backgroundPosition: 'right',
   };
 
@@ -69,12 +69,13 @@ function Login() {
   };
 
   const loginTitleStyle: React.CSSProperties = {
-    color: '#d14d72', // Rosa escuro
-    backgroundColor: '#d14d72', // Fundo rosa escuro
+    color: '#fff', // Cor branca
+    backgroundColor: '#d14d72', // Cor de fundo rosa escuro
     borderRadius: '20px', // Bordas arredondadas
     textAlign: 'center',
     padding: '10px',
     fontSize: '2rem',
+    fontWeight: 'bold', // Fonte grossa
     marginBottom: '20px',
   };
 
@@ -144,7 +145,7 @@ function Login() {
           onSubmit={login}
           className="flex flex-col w-1/2 gap-4"
         >
-          <h2 style={loginTitleStyle}>Entrar</h2>
+          <h2 style={loginTitleStyle}>Login</h2>
           <div style={inputGroupStyle} className="flex flex-col w-full">
             <label htmlFor="usuario" style={labelStyle}>
               Usuário
@@ -153,7 +154,7 @@ function Login() {
               type="text"
               id="usuario"
               name="usuario"
-              placeholder="Usuario"
+              placeholder="Usuário"
               style={loginInputStyle}
               value={usuarioLogin.usuario}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
