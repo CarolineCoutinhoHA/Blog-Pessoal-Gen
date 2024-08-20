@@ -73,7 +73,7 @@ function Login() {
               visible={true}
             />
           ) : (
-            <span>Entrar</span>
+            <span>Entre</span>
           )}
         </button>
         <hr className="login-divider" />
